@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Perpustakaan</title>
+    <title>Artikel Novel</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url('./assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
@@ -30,7 +30,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">O'Library</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Isnaini's Artikel</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -38,22 +38,16 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+              <a class="nav-link js-scroll-trigger" href="#home">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#portfolio">My Book</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#team">Admin</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="../admin/index1.php">Logout</a>
             </li>
           </ul>
         </div>
@@ -64,19 +58,19 @@
     <header class="masthead">
       <div class="container">
         <div class="intro-text">
-          <div class="intro-lead-in">Welcome To Our Library!</div>
+          <div class="intro-lead-in">Welcome To My Artikel!</div>
           <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
-          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Scroll Me !</a>
+          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#home">Scroll Me !</a>
         </div>
       </div>
     </header>
 
-    <!-- Services -->
-    <section id="services">
+    <!-- Home -->
+    <section id="home">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">Services</h2>
+            <h2 class="section-heading text-uppercase">About This Artikel</h2>
             <h3 class="section-subheading text-muted">In O'Library you can do this :)</h3>
           </div>
         </div>
@@ -118,10 +112,10 @@
             <h3 class="section-subheading text-muted">My Collection Book in O'Library</h3>
           </div>
         </div>
-        <?php foreach($result as $d){ ?>
-	        <div class="row">
+        
+	    <div class="row">
+	        <?php foreach($result as $d){ ?>
 	          <div class="col-md-4 col-sm-6 portfolio-item">
-
 	            <a href="<?php echo base_url()."artikel_novel/do_preview/".$d['id']; ?>">
 	              <div class="portfolio-hover">
 	                <div class="portfolio-hover-content">
@@ -132,101 +126,23 @@
 	            </a>
 	            <div class="portfolio-caption">
 	              <h4><?php echo $d['judul_novel']; ?></h4>
-	              <p class="text-muted">Pelajar</p>
+	              <p class="text-muted"><?php echo $d['penulis']; ?></p>
 	            </div>
 	          </div>
-	        </div>
-	    <?php } ?>    
+	          <?php } ?>  
+	         </div>
+	    	  
 	    </div>
     </section>
 
-    <!-- About -->
-    <section id="about">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">About</h2>
-            <h3 class="section-subheading text-muted">About O'Library</h3>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <ul class="timeline">
-              <li>
-                <div class="timeline-image">
-                  <img class="rounded-circle img-fluid" src="img/about/1.jpg" alt="">
-                </div>
-                <div class="timeline-panel">
-                  <div class="timeline-heading">
-                    <h4>O'Library</h4>
-                    <h4 class="subheading">Since 2000</h4>
-                  </div>
-                  <div class="timeline-body">
-                    <p class="text-muted">O'Library berdiri sejak tahun 2000 sampai saat ini masih melayani semua umur dengan menyediakan segala macam buku</p>
-                  </div>
-                </div>
-              </li>
-              <li class="timeline-inverted">
-                <div class="timeline-image">
-                  <img class="rounded-circle img-fluid" src="img/about/2.jpg" alt="">
-                </div>
-                <div class="timeline-panel">
-                  <div class="timeline-heading">
-                    <h4>Address</h4>
-                    <h4 class="subheading">O'Library</h4>
-                  </div>
-                  <div class="timeline-body">
-                    <p class="text-muted">O'Library beralamatkan di JL. Gadang Gg VIII/8 RT.02 RW 06 Kec. Sukun, Kel. Gadang</p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="timeline-image">
-                  <img class="rounded-circle img-fluid" src="img/about/3.jpg" alt="">
-                </div>
-                <div class="timeline-panel">
-                  <div class="timeline-heading">
-                    <h4>Collect Books</h4>
-                    <h4 class="subheading">Since 2001</h4>
-                  </div>
-                  <div class="timeline-body">
-                    <p class="text-muted">Mulai mengumpulkan buku untuk O'Library sejak tahun 2001 dan ada beberapa event untuk mengadakan pameran buku tiap 3bulan sekali</p>
-                  </div>
-                </div>
-              </li>
-             <!--  <li class="timeline-inverted">
-                <div class="timeline-image">
-                  <img class="rounded-circle img-fluid" src="img/about/4.jpg" alt="">
-                </div>
-                <div class="timeline-panel">
-                  <div class="timeline-heading">
-                    <h4>July 2014</h4>
-                    <h4 class="subheading">Phase Two Expansion</h4>
-                  </div>
-                  <div class="timeline-body">
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                  </div>
-                </div>
-              </li> -->
-              <li class="timeline-inverted">
-                <div class="timeline-image">
-                  <h4>Be Part
-                    <br>Of Our
-                    <br>Member !</h4>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+    
 
     <!-- Team -->
     <section class="bg-light" id="team">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">Admin in O'Library</h2>
+            <h2 class="section-heading text-uppercase">Penulis Artikel</h2>
             <h3 class="section-subheading text-muted">Staff yang ada di O'Library</h3>
           </div>
         </div>
@@ -349,7 +265,44 @@
             <h3 class="section-subheading text-muted">Contact O'Library</h3>
           </div>
         </div>
-       
+       <div class="row">
+          <div class="col-lg-12">
+            <?php echo form_open_multipart('artikel_novel/do_insert')?>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                  	<input class="form-control" type="text" name="judul_novel" placeholder="Judul Novel">
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="genre" placeholder="Genre">
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" name="thn_terbit" type="text" placeholder="Tahun Terbit">
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" name="penulis" type="text" placeholder="Penulis">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <textarea class="form-control" id="message" name="sinopsis" placeholder="Sinopsis"></textarea>
+                    
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" name="userfile" type="file" placeholder="Penulis">
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-lg-12 text-center">
+                  <div id="success"></div>
+                  <input type="submit" class="btn btn-primary btn-xl text-uppercase" name="btnSubmit" value="Simpan"/>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
     
     <!-- Footer -->
     <footer>

@@ -30,35 +30,31 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">O'Library</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Artikel Novel</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#services">Services</a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#portfolio">My Book</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
-            </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#team">Admin</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="../admin/index1.php">Logout</a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
     </nav>
+
+
 
     <!-- Book Grid -->
     <section class="bg-light" id="portfolio">
@@ -71,9 +67,10 @@
           </div>
         </div>
         
+        
+
           <div class="row">
             <div class="col-md-4 col-sm-6 portfolio-item">
-
               <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
                 <div class="portfolio-hover">
                   <div class="portfolio-hover-content">
@@ -83,13 +80,26 @@
                 <img class="img-fluid" src="<?php echo base_url('images/'.$d['img']); ?>" alt=""> 
               </a>
               <div class="portfolio-caption">
-                <h4></h4>
-                <p class="text-muted">Pelajar</p>
               </div>
             </div>
+                <div><p><?php echo $d['judul_novel']; ?></p><br>
+                <div><p><?php echo $d['genre']; ?></p><br>
+                <div><p><?php echo $d['thn_terbit']; ?></p><br>
+                <div><p><?php echo $d['penulis']; ?></p><br>
+                <div><p><?php echo $d['sinopsis']; ?></p><br></div>
           </div>
-      <?php } ?>    
+       
       </div>
+
+          <div class="col-lg-12 text-center">
+                  <div id="success"></div>
+                  <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="<?php echo base_url()."artikel_novel/edit_data/".$d['id']; ?>">Update</a>
+              
+                  <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="<?php echo base_url()."artikel_novel/do_delete/".$d['id']; ?>">Delete</a>
+
+                  <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="<?php echo base_url()."artikel_novel/" ?>">Back</a>
+           </div>
+           <?php } ?>
     </section>
 
     
@@ -124,7 +134,6 @@
       </div>
     </footer>
 </section>
-    <!-- Portfolio Modals -->
 
     <!-- Modal 1 -->
     <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
@@ -159,6 +168,8 @@
         </div>
       </div>
     </div>
+
+
     
     
     <!-- Bootstrap core JavaScript -->

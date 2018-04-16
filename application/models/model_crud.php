@@ -2,7 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Model_crud extends CI_Model {
-	
+
+// CREATE
 	public function GetArtikel(){
 		
 		$this->db->select('id,judul_novel,genre,thn_terbit,penulis,sinopsis,img');
@@ -20,4 +21,21 @@ class Model_crud extends CI_Model {
 		$res = $this->db->insert($tabelNama,$data);
 		return $res;
 		}
+
+// DELETE
+		public function DeleteData($tabelNama,$where){
+		$res = $this->db->delete($tabelNama,$where);
+		return $res;
+		}
+
+	public function getedit($id=''){
+		$data = $this->db->query('SELECT id,judul_novel,genre,thn_terbit,penulis,sinopsis,img FROM novel where id = '.$id);
+		return $data->result_array();
+	}
+
+// UPDATE
+	public function UpdateData($tabelNama,$data,$where){
+		$res = $this->db->update($tabelNama,$data,$where);
+		return $res;
+	}
 }
