@@ -24,12 +24,47 @@ class Artikel_novel extends CI_Controller {
 		$data['res'] = $this->model_crud->GetPreview($id);
 		$this->load->view('rev', $data);
 	}
-
+//insert
 	public function add_data(){	
 		$this->load->view('form_add');
 	}
 
 	public function do_insert(){
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('judul_novel', 'Judul Novel', 'required|is_unique[novel.judul_novel]',
+   			array(
+		       'required'      => 'Judul Novel Kosong, silahkan isi terlebih dahulu',
+		       'is_unique'     => 'Judul' .$this->input->post('judul_novel'). ' sudah ada.'
+		  	));
+		$this->form_validation->set_rules('genre', 'Genre', 'required',
+   			array(
+		       'required'      => 'Genre Kosong, silahkan isi terlebih dahulu'
+		 	));
+		$this->form_validation->set_rules('thn_terbit', 'Tahun Terbit', 'required',
+   			array(
+		       'required'      => 'Tahun Terbit Kosong, silahkan isi terlebih dahulu'
+		 	));
+		$this->form_validation->set_rules('penulis', 'penulis', 'required',
+   			array(
+		       'required'      => 'Penulis Kosong, silahkan isi terlebih dahulu'
+		 	));
+		$this->form_validation->set_rules('sinopsis', 'Sinopsis', 'required',
+   			array(
+		       'required'      => 'Sinopsis Kosong, silahkan isi terlebih dahulu'
+		 	));
+
+		if ($this->form_validation->run() === FALSE)
+	    {
+	    	$this->load->model('model_crud');
+
+			$data['result'] = $this->model_crud->GetArtikel();
+
+			$this->load->view('index', $data);
+	        //$this->load->view('index');
+	    } else {
+
 		$config['upload_path']          = 'images/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['max_size']             = 1000;
@@ -75,8 +110,7 @@ class Artikel_novel extends CI_Controller {
 			}
         }
 	}
-
-
+}
 
 	public function edit_data($id='',$img=''){
 		$this->load->model('model_crud');
@@ -93,7 +127,38 @@ class Artikel_novel extends CI_Controller {
 		$this->load->view('form_edit',$data);
 	}
 
-	public function do_update(){
+	public function do_update($id=''){
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('judul_novel', 'Judul Novel', 'required|is_unique[novel.judul_novel]',
+   			array(
+		       'required'      => 'Judul Novel Kosong, silahkan isi terlebih dahulu',
+		       'is_unique'     => 'Judul' .$this->input->post('judul_novel'). ' sudah ada.'
+		  	));
+		$this->form_validation->set_rules('genre', 'Genre', 'required',
+   			array(
+		       'required'      => 'Genre Kosong, silahkan isi terlebih dahulu'
+		 	));
+		$this->form_validation->set_rules('thn_terbit', 'Tahun Terbit', 'required',
+   			array(
+		       'required'      => 'Tahun Terbit Kosong, silahkan isi terlebih dahulu'
+		 	));
+		$this->form_validation->set_rules('penulis', 'penulis', 'required',
+   			array(
+		       'required'      => 'Penulis Kosong, silahkan isi terlebih dahulu'
+		 	));
+		$this->form_validation->set_rules('sinopsis', 'Sinopsis', 'required',
+   			array(
+		       'required'      => 'Sinopsis Kosong, silahkan isi terlebih dahulu'
+		 	));
+
+		if ($this->form_validation->run() === FALSE)
+	    {
+	    	
+	        $this->load->view('form_edit');
+	    } else {
+
 		$config['upload_path']          = 'images/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['max_size']             = 1000;
@@ -137,6 +202,7 @@ class Artikel_novel extends CI_Controller {
 			}
 		}
 	}
+}
 
 	public function do_delete($id){
 		$this->load->model('model_crud');

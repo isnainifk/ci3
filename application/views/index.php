@@ -266,30 +266,36 @@
           </div>
         </div>
        <div class="row">
-          <div class="col-lg-12">
+          <div class="col-lg-12"> 
+          <?php echo validation_errors(); ?>
             <?php echo form_open_multipart('artikel_novel/do_insert')?>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                  	<input class="form-control" type="text" name="judul_novel" placeholder="Judul Novel">
+                  	<input class="form-control" type="text" name="judul_novel" value="<?php echo set_value('judul_novel') ?>" placeholder="Judul Novel"> required>
+                    <div class="invalid-feedback">Isi Kolom Judul Dahulu</div>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="text" name="genre" placeholder="Genre">
+                    <input class="form-control" type="text" name="genre" value="<?php echo set_value('genre') ?>" placeholder="Genre">required>
+                    <div class="invalid-feedback">Isi Kolom Genre Dahulu</div>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" name="thn_terbit" type="text" placeholder="Tahun Terbit">
+                    <input class="form-control" name="thn_terbit" type="text" value="<?php echo set_value('thn_terbit') ?>" placeholder="Tahun Terbit">required>
+                    <div class="invalid-feedback">Isi Kolom Tahun Terbit Dahulu</div>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" name="penulis" type="text" placeholder="Penulis">
+                    <input class="form-control" name="penulis" type="text" value="<?php echo set_value('penulis') ?>" placeholder="Penulis">required>
+                    <div class="invalid-feedback">Isi Kolom Penulis Dahulu</div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <textarea class="form-control" id="message" name="sinopsis" placeholder="Sinopsis"></textarea>
-                    
+                    <textarea class="form-control" id="message" name="sinopsis" value="<?php echo set_value('sinopsis') ?>" placeholder="Sinopsis"></textarea>required>
+                    <div class="invalid-feedback">Isi Kolom Sinopsis Dahulu</div> 
                   </div>
                   <div class="form-group">
-                    <input class="form-control" name="userfile" type="file" placeholder="Penulis">
+                    <input class="form-control" name="userfile" type="file" value="<?php echo set_value('penulis') ?>" placeholder="Penulis">required>
+                    <div class="invalid-feedback">Isi Kolom Penulis Dahulu</div>
                   </div>
                 </div>
                 <div class="clearfix"></div>
@@ -385,7 +391,7 @@
 
     <!-- Custom scripts for this template -->
     <script src="<?php echo base_url('./assets/js/agency.min.js'); ?>"></script>
-
+    <script src="<?php echo base_url() ?>assets/js/custom.js"></script>
   </body>
 
 </html>
