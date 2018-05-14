@@ -43,11 +43,15 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#portfolio">My Book</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#team">Admin</a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <!-- <a class="nav-link js-scroll-trigger" href="#kategori">Kategori</a> -->
+              <a href="<?php echo site_url('kategori/'); ?>" class="nav-link">Kategori</a>
             </li>
           </ul>
         </div>
@@ -127,107 +131,20 @@
 	            <div class="portfolio-caption">
 	              <h4><?php echo $d['judul_novel']; ?></h4>
 	              <p class="text-muted"><?php echo $d['penulis']; ?></p>
+                <small class="text-success text-uppercase"><?php echo $d['nama'];?></small>
 	            </div>
 	          </div>
 	          <?php } ?>  
 	         </div>
-	    	  
+	    	  <center><?php 
+        if (isset($links)) {
+            echo $links;
+        } 
+        ?> </center>
 	    </div>
     </section>
 
-    
-
-    <!-- Team -->
-    <section class="bg-light" id="team">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">Penulis Artikel</h2>
-            <h3 class="section-subheading text-muted">Staff yang ada di O'Library</h3>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="team-member">
-              <img class="mx-auto rounded-circle" src="img/team/1.jpg" alt="">
-              <h4>Isnaini</h4>
-              <p class="text-muted">Staff Pengolah Data O'Library</p>
-              <!-- <ul class="list-inline social-buttons">
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fa fa-twitter"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fa fa-facebook"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fa fa-linkedin"></i>
-                  </a>
-                </li>
-              </ul> -->
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="team-member">
-              <img class="mx-auto rounded-circle" src="img/team/2.jpg" alt="">
-              <h4>Budi Oetomo</h4>
-              <p class="text-muted">Staff Penata Buku</p>
-              <!-- <ul class="list-inline social-buttons">
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fa fa-twitter"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fa fa-facebook"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fa fa-linkedin"></i>
-                  </a>
-                </li>
-              </ul> -->
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="team-member">
-              <img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="">
-              <h4>Kartini</h4>
-              <p class="text-muted">Staff Pendata Member</p>
-              <!-- <ul class="list-inline social-buttons">
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fa fa-twitter"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fa fa-facebook"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#">
-                    <i class="fa fa-linkedin"></i>
-                  </a>
-                </li>
-              </ul> -->
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <p class="large text-muted">Admin yang ada di O'Library akan membantu anda dalam pencarian buku, menambahkan/mendaftarkan anda sebagai member atau anggota di O'Library</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
+  
     <!-- Clients -->
     <section class="py-5">
       <div class="container">
@@ -288,7 +205,11 @@
                     <div class="invalid-feedback">Isi Kolom Penulis Dahulu</div>
                   </div>
                 </div>
+                
                 <div class="col-md-6">
+                <div class="form-group">
+                  <?php echo form_dropdown('id_cat', $result, set_value('id_cat'), 'class="form-control" required' ); ?> 
+                </div>
                   <div class="form-group">
                     <textarea class="form-control" id="message" name="sinopsis" value="<?php echo set_value('sinopsis') ?>" placeholder="Sinopsis"></textarea>required>
                     <div class="invalid-feedback">Isi Kolom Sinopsis Dahulu</div> 
@@ -309,6 +230,10 @@
         </div>
       </div>
     </section>
+
+
+
+
     
     <!-- Footer -->
     <footer>
