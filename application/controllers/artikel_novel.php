@@ -62,6 +62,10 @@ class Artikel_novel extends CI_Controller {
 	}
 
 	public function do_insert(){
+		if(!$this->session->userdata('logged_in')){
+			redirect('user/login');
+		}
+		
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$data['result'] = $this->kategori_model->generate_cat_dropdown();

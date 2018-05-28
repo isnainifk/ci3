@@ -10,6 +10,8 @@
 
     <title>Artikel Novel</title>
 
+
+
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url('./assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
 
@@ -22,6 +24,7 @@
 
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url('./assets/css/agency.min.css'); ?>" rel="stylesheet">
+
 
   </head>
 
@@ -53,10 +56,48 @@
               <!-- <a class="nav-link js-scroll-trigger" href="#kategori">Kategori</a> -->
               <a href="<?php echo site_url('kategori/'); ?>" class="nav-link">Kategori</a>
             </li>
+            <li class="nav-item">
+              <!-- <a class="nav-link js-scroll-trigger" href="#kategori">Kategori</a> -->
+              <a href="<?php echo site_url('data/'); ?>" class="nav-link">Data Table</a>
+            </li>
+
+            <?php if(!$this->session->userdata('logged_in')) : ?>
+
+                    <div class="btn-group" role="group" aria-label="Data baru">
+                        <?php echo anchor('user/register', 'Register', array('class' => 'btn btn-outline-light')); ?>
+                        <?php echo anchor('user/login', 'Login', array('class' => 'btn btn-outline-light')); ?>
+
+                    </div>
+
+                <?php endif; ?>
+
+                <?php if($this->session->userdata('logged_in')) : ?>
+                    <div class="btn-group" role="group" aria-label="Data baru">
+
+                        <?php echo anchor('blog/create', 'Artikel Baru', array('class' => 'btn btn-outline-light')); ?>
+                        <?php echo anchor('category/create', 'Kategori Baru', array('class' => 'btn btn-outline-light')); ?>
+                        <?php echo anchor('user/logout', 'Logout', array('class' => 'btn btn-outline-light')); ?>
+                    </div>
+                <?php endif; ?>
           </ul>
         </div>
       </div>
     </nav>
+    <?php if($this->session->flashdata('user_registered')): ?>
+              <?php echo '<div class="alert alert-success" role="alert">'.$this->session->flashdata('user_registered').'</div>'; ?>
+            <?php endif; ?>
+
+            <?php if($this->session->flashdata('login_failed')): ?>
+              <?php echo '<div class="alert alert-danger">'.$this->session->flashdata('login_failed').'</div>'; ?>
+            <?php endif; ?>
+
+            <?php if($this->session->flashdata('user_loggedin')): ?>
+              <?php echo '<div class="alert alert-success">'.$this->session->flashdata('user_loggedin').'</div>'; ?>
+            <?php endif; ?>
+
+            <?php if($this->session->flashdata('user_loggedout')): ?>
+              <?php echo '<div class="alert alert-success">'.$this->session->flashdata('user_loggedout').'</div>'; ?>
+            <?php endif; ?>
 
     <!-- Header -->
     <header class="masthead">
@@ -178,8 +219,8 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">Contact Us</h2>
-            <h3 class="section-subheading text-muted">Contact O'Library</h3>
+            <h2 class="section-heading text-uppercase">Insert</h2>
+            <h3 class="section-subheading text-muted">Form Input</h3>
           </div>
         </div>
        <div class="row">
@@ -193,15 +234,15 @@
                     <div class="invalid-feedback">Isi Kolom Judul Dahulu</div>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="text" name="genre" value="<?php echo set_value('genre') ?>" placeholder="Genre">required>
+                    <input class="form-control" type="text" name="genre" value="<?php echo set_value('genre') ?>" placeholder="Genre">
                     <div class="invalid-feedback">Isi Kolom Genre Dahulu</div>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" name="thn_terbit" type="text" value="<?php echo set_value('thn_terbit') ?>" placeholder="Tahun Terbit">required>
+                    <input class="form-control" name="thn_terbit" type="text" value="<?php echo set_value('thn_terbit') ?>" placeholder="Tahun Terbit">
                     <div class="invalid-feedback">Isi Kolom Tahun Terbit Dahulu</div>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" name="penulis" type="text" value="<?php echo set_value('penulis') ?>" placeholder="Penulis">required>
+                    <input class="form-control" name="penulis" type="text" value="<?php echo set_value('penulis') ?>" placeholder="Penulis">
                     <div class="invalid-feedback">Isi Kolom Penulis Dahulu</div>
                   </div>
                 </div>
@@ -211,11 +252,11 @@
                   <?php echo form_dropdown('id_cat', $result, set_value('id_cat'), 'class="form-control" required' ); ?> 
                 </div>
                   <div class="form-group">
-                    <textarea class="form-control" id="message" name="sinopsis" value="<?php echo set_value('sinopsis') ?>" placeholder="Sinopsis"></textarea>required>
+                    <textarea class="form-control" id="message" name="sinopsis" value="<?php echo set_value('sinopsis') ?>" placeholder="Sinopsis"></textarea>
                     <div class="invalid-feedback">Isi Kolom Sinopsis Dahulu</div> 
                   </div>
                   <div class="form-group">
-                    <input class="form-control" name="userfile" type="file" value="<?php echo set_value('penulis') ?>" placeholder="Penulis">required>
+                    <input class="form-control" name="userfile" type="file" value="<?php echo set_value('penulis') ?>" placeholder="Penulis">
                     <div class="invalid-feedback">Isi Kolom Penulis Dahulu</div>
                   </div>
                 </div>
