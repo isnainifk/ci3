@@ -57,29 +57,30 @@ class User extends CI_Controller{
 	// Get & encrypt password
 	$password = md5($this->input->post('password'));
 
-	// Login user
-	$user_id = $this->user_model->login($username, $password);
+			// Login user
+			$user_id = $this->user_model->login($username, $password);
 
-	if($user_id){
-		// Buat session
-		$user_data = array(
-			'user_id' => $user_id,
-			'username' => $username,
-			'logged_in' => true
-		);
+			if($user_id){
+				// Buat session
+				$user_data = array(
+					'user_id' => $user_id,
+					'username' => $username,
+					'logged_in' => true,
+		            'level' => $this->user_model->get_user_level($user_id)
+		        );
 
-		$this->session->set_userdata($user_data);
+				$this->session->set_userdata($user_data);
 
-		// Set message
-		$this->session->set_flashdata('user_loggedin', 'Anda sudah login');
+				// Set message
+				$this->session->set_flashdata('user_loggedin', 'Anda sudah login');
 
-		redirect('blog');
-	} else {
-		// Set message
-		$this->session->set_flashdata('login_failed', 'Login invalid');
+				redirect('user/dashboard');
+			} else {
+				// Set message
+				$this->session->set_flashdata('login_failed', 'Login invalid');
 
-		redirect('user/login');
-	}		
+				redirect('user/login');
+			}		
 		}
 	}
 
@@ -95,5 +96,26 @@ class User extends CI_Controller{
 
 		redirect('user/login');
 	}
+
+	//Fungsi Dashboard
+	public function dashboard()
+	{
+        if(!$this->session->userdata('logged_in'))
+        
+            redirect('user/login');
+      
+
+        $user_id = $this->session->userdata('user_id');
+
+        // Dapatkan detail user
+        $data['user'] = $this->user_model->get_user_details( $user_id );
+        
+
+        // Load dashboard
+        $this->load->view('templates/header', $data, FALSE);
+        $this->load->view('users/dashboard', $data, FALSE);
+        $this->load->view('templates/footer', $data, FALSE);
+    }
+
 
 }

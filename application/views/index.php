@@ -108,6 +108,7 @@
           <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#home">Scroll Me !</a>
         </div>
       </div>
+      <!-- <?php var_dump($this->session->userdata()) ?> -->
     </header>
 
     <!-- Home -->
