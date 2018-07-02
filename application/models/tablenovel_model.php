@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Destinasi extends CI_Model {
+class tablenovel_model extends CI_Model {
 	
 	public function GetArtikel(){
 		

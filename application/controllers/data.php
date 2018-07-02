@@ -4,15 +4,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Data extends CI_Controller {
 	
 	public function index(){
-		$this->load->model('novel');
+		$this->load->model('tablenovel_model');
 
-		$data['result'] = $this->novel->GetArtikel();
+		$data['result'] = $this->tablenovel_model->GetArtikel();
 
 		$this->load->view('DataTable', $data);
 	} 
 
 	public function do_preview($id=''){
-		$this->load->model('novel');
+		$this->load->model('tablenovel_model');
 
 		$data['result'] = $this->novel->GetPreview($id);
 
@@ -29,7 +29,6 @@ class Data extends CI_Controller {
 	}
 
 	public function do_insert(){
-			public function do_insert(){
 			$config['upload_path']          = 'images/';
 	        $config['allowed_types']        = 'gif|jpg|png';
 	        $config['max_size']             = 1000;
@@ -137,7 +136,7 @@ class Data extends CI_Controller {
 				$this->session->set_flashdata('pesan','Update Data Sukses');
 				redirect('data');
 			}
-		
+		}
 	}
 
 	public function do_delete($id){

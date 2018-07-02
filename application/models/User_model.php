@@ -51,10 +51,38 @@ public function get_user_level($user_id) {
        }
    }
 
-   public function get_user_details( $user_id )
+   // public function get_user_details( $user_id )
+   // {
+   //     $this->db->join('levels','levels.level_id = users.fk_level_id', 'left');
+   //     $this->db->where('user_id', $user_id);
+
+   //     $result = $this->db->get('users');
+
+   //     if ($result->num_rows() == 1) {
+   //         return $result->row();
+   //     } else {
+   //         return false;
+   //     }
+   // }
+
+   // function get_level_name($level_id)
+   // {
+   //      $this->db->select('nama_level');
+   //      $this->db->where('level_id', $user_id);
+
+   //      $result = $this->db->get('levels');
+
+   //      if ($result->num_rows() == 1) {
+   //         return $result->row();
+   //      } else {
+   //         return false;
+   //      }
+   // }
+
+   public function get_user_details( $username )
    {
-       $this->db->join('levels','levels.level_id = users.fk_level_id', 'left');
-       $this->db->where('user_id', $user_id);
+       $this->db->join('levels', 'levels.level_id = users.fk_level_id');
+       $this->db->where('username', $username);
 
        $result = $this->db->get('users');
 
@@ -65,18 +93,18 @@ public function get_user_level($user_id) {
        }
    }
 
-   function get_level_name($level_id)
+   public function get_level_name( $level_id )
    {
-        $this->db->select('nama_level');
-        $this->db->where('level_id', $user_id);
+       $this->db->select('nama_level');
+       $this->db->where('level_id', $level_id);
 
-        $result = $this->db->get('levels');
+       $result = $this->db->get('levels');
 
-        if ($result->num_rows() == 1) {
+       if ($result->num_rows() == 1) {
            return $result->row();
-        } else {
+       } else {
            return false;
-        }
+       }
    }
 
 }
